@@ -4,6 +4,11 @@ A React application with a **Designers** management page and an interactive **3D
 
 ![React](https://img.shields.io/badge/React-19-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) ![Three.js](https://img.shields.io/badge/Three.js-R182-green) ![Tailwind](https://img.shields.io/badge/Tailwind-4-cyan) ![Tests](https://img.shields.io/badge/Tests-36%20passing-brightgreen)
 
+**Live Demos:**
+
+- **GitHub Pages:** [https://ekberakh.github.io/Simple-Dashboard-3D/](https://ekberakh.github.io/Simple-Dashboard-3D/)
+- **Vercel:** [https://simple-dashboard-3-d-seven.vercel.app/](https://simple-dashboard-3-d-seven.vercel.app/)
+
 ---
 
 ## Features
@@ -12,7 +17,7 @@ A React application with a **Designers** management page and an interactive **3D
 
 - View all currently employed designers in a responsive card grid
 - Add new designers via a validated form (full name, working hours)
-- Edit and delete existing designers
+- Edit and delete existing designers with confirmation modal
 - Attached object count updates automatically
 
 ### 3D Editor Page
@@ -24,8 +29,17 @@ A React application with a **Designers** management page and an interactive **3D
 - **Hover** objects to highlight them
 - **Click** to select — opens the properties panel
 - **Drag** selected objects to reposition them on the ground plane
-- Edit object properties in real-time: name, assigned designer, color, size, and geometry
-- Delete objects from the properties panel
+- Edit object properties via modal: name, assigned designer, color, size, and geometry
+- Delete objects with confirmation dialog
+
+### Mobile Responsive
+
+- Fully responsive from **330px** to desktop
+- Hamburger menu with animated Menu ↔ X icon and slide-down navigation
+- Mobile-optimized 3D editor with floating pill FAB and bottom sheet properties panel
+- Compact color picker on mobile (palette + HEX only, no RGB/preview)
+- Scrollable modals capped at `90dvh` for small screens
+- Touch-friendly controls and tap targets throughout
 
 ### Accessibility
 
@@ -52,7 +66,7 @@ A React application with a **Designers** management page and an interactive **3D
 - **Tailwind CSS v4** with custom theme tokens
 - Fully typed with **TypeScript** (zero errors)
 - Clean, modular architecture
-- **GitHub Pages** deployment via GitHub Actions
+- Dual deployment: **GitHub Pages** (GitHub Actions) + **Vercel** (auto-detect)
 
 ---
 
@@ -101,7 +115,10 @@ npm run test:watch
 
 ### Deployment
 
-The project includes a GitHub Actions workflow ([.github/workflows/deploy.yml](.github/workflows/deploy.yml)) that automatically deploys to GitHub Pages on push to `main`. Enable GitHub Pages (Settings → Pages → Source: GitHub Actions) in your repository.
+The project is configured for dual deployment:
+
+- **GitHub Pages** — GitHub Actions workflow ([.github/workflows/deploy.yml](.github/workflows/deploy.yml)) automatically builds and deploys on push to `main`. Enable via Settings → Pages → Source: GitHub Actions.
+- **Vercel** — Auto-detected as a Vite project. The `VERCEL` environment variable switches the base path to `/` automatically. A [vercel.json](vercel.json) handles SPA rewrites.
 
 ---
 
@@ -128,12 +145,14 @@ src/
 │   │   ├── Ground.tsx      # Ground plane with double-click handler
 │   │   ├── SceneObjectMesh.tsx   # Interactive 3D object (multi-geometry)
 │   │   ├── AddObjectModal.tsx    # Object creation form
+│   │   ├── EditObjectModal.tsx   # Object editing form
 │   │   └── PropertiesPanel.tsx   # Object property editor sidebar
 │   └── ui/                 # Reusable UI primitives
 │       ├── Button.tsx
 │       ├── Input.tsx
-│       ├── Select.tsx
+│       ├── Select.tsx       # Custom dropdown with keyboard navigation
 │       ├── Modal.tsx        # Focus-trapped accessible modal
+│       ├── ConfirmModal.tsx # Confirmation dialog
 │       ├── Badge.tsx
 │       ├── ColorPicker.tsx  # Advanced color picker (palettes + HEX + RGB)
 │       └── GeometrySelector.tsx  # Visual geometry type selector
@@ -160,6 +179,7 @@ src/
 | **Mock API with interface**             | `ApiClient` interface makes swapping to a real API a one-line change |
 | **localStorage persistence**            | Data persists across refreshes as required; easily replaceable       |
 | **Tailwind CSS v4**                     | Utility-first styling with `@theme` tokens for consistent design     |
+| **Dual deploy (Pages + Vercel)**        | Platform-agnostic base path via `VERCEL` env auto-detection          |
 
 ---
 
