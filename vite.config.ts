@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 export default defineConfig({
-  base: "/Simple-Dashboard-3D/",
+  base: process.env.VITE_BASE ?? "/Simple-Dashboard-3D/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
