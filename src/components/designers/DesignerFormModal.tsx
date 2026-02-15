@@ -75,7 +75,7 @@ export const DesignerFormModal: React.FC<DesignerFormModalProps> = ({
       >
         <Input
           label="Full Name"
-          placeholder="e.g. John Doe"
+          placeholder="e.g. Akbar Akhundov"
           error={errors.fullName?.message}
           autoFocus
           {...register("fullName")}
