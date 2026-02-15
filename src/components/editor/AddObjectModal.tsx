@@ -78,7 +78,7 @@ export const AddObjectModal: React.FC<AddObjectModalProps> = ({
     >
       <form
         onSubmit={handleSubmit(handleFormSubmit)}
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-3 sm:gap-4"
       >
         <Input
           label="Object Name"
@@ -150,7 +150,19 @@ export const AddObjectModal: React.FC<AddObjectModalProps> = ({
             name="color"
             control={control}
             render={({ field }) => (
-              <ColorPicker value={field.value} onChange={field.onChange} />
+              <>
+                <ColorPicker
+                  value={field.value}
+                  onChange={field.onChange}
+                  compact
+                  className="sm:hidden"
+                />
+                <ColorPicker
+                  value={field.value}
+                  onChange={field.onChange}
+                  className="hidden sm:flex"
+                />
+              </>
             )}
           />
           {errors.color && (

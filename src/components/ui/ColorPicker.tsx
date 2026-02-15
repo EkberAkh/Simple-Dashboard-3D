@@ -63,12 +63,14 @@ interface ColorPickerProps {
   value: string;
   onChange: (color: string) => void;
   compact?: boolean;
+  className?: string;
 }
 
 export const ColorPicker: React.FC<ColorPickerProps> = ({
   value,
   onChange,
   compact = false,
+  className = "",
 }) => {
   const [hexInput, setHexInput] = useState(value);
   const [rgbValues, setRgbValues] = useState(() => hexToRgb(value));
@@ -124,7 +126,7 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
   const swatchGap = compact ? "gap-1" : "gap-1.5";
 
   return (
-    <div className="flex flex-col gap-2.5">
+    <div className={`flex flex-col gap-2 sm:gap-2.5 ${className}`}>
       <div className="flex gap-1 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-thin">
         {COLOR_PALETTES.map((p, i) => (
           <button
@@ -185,32 +187,36 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-1.5">
-        {(["r", "g", "b"] as const).map((ch) => (
-          <div key={ch} className="flex flex-col">
-            <span className="text-[10px] text-slate-400 uppercase font-medium mb-0.5 text-center">
-              {ch}
-            </span>
-            <input
-              type="number"
-              min={0}
-              max={255}
-              value={rgbValues[ch]}
-              onChange={(e) => handleRgbChange(ch, e.target.value)}
-              className="w-full text-center text-xs font-mono text-slate-700 bg-slate-50 rounded border border-border px-1 py-1 outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400"
-              aria-label={`${ch.toUpperCase()} channel`}
-            />
-          </div>
-        ))}
-      </div>
+      {!compact && (
+        <div className="grid grid-cols-3 gap-1.5">
+          {(["r", "g", "b"] as const).map((ch) => (
+            <div key={ch} className="flex flex-col">
+              <span className="text-[10px] text-slate-400 uppercase font-medium mb-0.5 text-center">
+                {ch}
+              </span>
+              <input
+                type="number"
+                min={0}
+                max={255}
+                value={rgbValues[ch]}
+                onChange={(e) => handleRgbChange(ch, e.target.value)}
+                className="w-full text-center text-xs font-mono text-slate-700 bg-slate-50 rounded border border-border px-1 py-1 outline-none focus:ring-1 focus:ring-primary-400 focus:border-primary-400"
+                aria-label={`${ch.toUpperCase()} channel`}
+              />
+            </div>
+          ))}
+        </div>
+      )}
 
-      <div className="flex items-center gap-2">
-        <div
-          className={`${compact ? "w-6 h-6" : "w-8 h-8"} rounded-lg border border-border shadow-inner`}
-          style={{ backgroundColor: value }}
-        />
-        <span className="text-[10px] text-slate-400">Preview</span>
-      </div>
+      {!compact && (
+        <div className="flex items-center gap-2">
+          <div
+            className={`${compact ? "w-6 h-6" : "w-8 h-8"} rounded-lg border border-border shadow-inner`}
+            style={{ backgroundColor: value }}
+          />
+          <span className="text-[10px] text-slate-400">Preview</span>
+        </div>
+      )}
     </div>
   );
 };

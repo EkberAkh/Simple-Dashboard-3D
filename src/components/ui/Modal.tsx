@@ -87,9 +87,9 @@ export const Modal: React.FC<ModalProps> = ({
     >
       <div
         ref={contentRef}
-        className={`modal-content bg-white rounded-xl shadow-xl w-full ${maxWidth}`}
+        className={`modal-content bg-white rounded-xl shadow-xl w-full max-h-[90dvh] flex flex-col ${maxWidth}`}
       >
-        <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 border-b border-border">
+        <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4 border-b border-border shrink-0">
           <h2
             id="modal-title"
             className="text-base sm:text-lg font-semibold text-slate-900 pr-2"
@@ -105,7 +105,9 @@ export const Modal: React.FC<ModalProps> = ({
           </button>
         </div>
 
-        <div className="px-4 py-4 sm:px-6 sm:py-5">{children}</div>
+        <div className="px-4 py-4 sm:px-6 sm:py-5 overflow-y-auto overscroll-contain">
+          {children}
+        </div>
       </div>
     </div>
   );
