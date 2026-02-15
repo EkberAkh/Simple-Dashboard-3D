@@ -48,7 +48,7 @@ export const Navbar: React.FC = () => {
       className="bg-white border-b border-border sticky top-0 z-40"
       ref={menuRef}
     >
-      <div className="max-w-screen-2xl mx-auto px-3 sm:px-6 h-13 sm:h-14 flex items-center justify-between">
+      <div className="max-w-screen-xl mx-auto px-3 sm:px-6 h-13 sm:h-14 flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-3">
           <div
             className="w-7 h-7 sm:w-8 sm:h-8 bg-primary-600 rounded-lg flex items-center justify-center"
