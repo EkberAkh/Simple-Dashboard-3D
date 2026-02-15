@@ -61,8 +61,8 @@ export const DesignersPage: React.FC = () => {
 
   return (
     <div className="h-full overflow-auto">
-      <div className="max-w-7xl mx-auto px-3 py-5 sm:px-6 sm:py-8">
-        <div className="flex items-center justify-between gap-3 mb-5 sm:mb-8">
+      <div className="max-w-screen-xl mx-auto px-3 py-5 sm:px-6 sm:py-8">
+        <div className="flex items-center justify-between gap-3 mb-5 sm:mb-6">
           <div className="min-w-0">
             <h1 className="text-xl sm:text-2xl font-bold text-slate-900 mb-0.5 sm:mb-1">
               Designers
