@@ -7,7 +7,7 @@ A React application with a **Designers** management page and an interactive **3D
 **Live Demos:**
 
 - **GitHub Pages:** [https://ekberakh.github.io/Simple-Dashboard-3D/](https://ekberakh.github.io/Simple-Dashboard-3D/)
-- **Vercel:** [https://simple-dashboard-3-d-seven.vercel.app/](https://simple-dashboard-3-d-seven.vercel.app/)
+- **Vercel:** [https://akbar-simple-dashboard-3d.vercel.app](https://akbar-simple-dashboard-3d.vercel.app)
 
 ---
 
